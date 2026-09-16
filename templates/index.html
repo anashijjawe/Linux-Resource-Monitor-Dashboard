@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dockerized Linux resource monitoring dashboard for CPU, memory, disk, load and network usage." />
+  <title>Linux Resource Monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">DOCKERIZED SYSTEM MONITOR</p>
+        <h1>Linux Resource Monitor</h1>
+        <p class="subtitle">Live CPU, memory, disk, load and network metrics from a lightweight Flask + psutil service.</p>
+      </div>
+      <div class="status-wrap">
+        <span id="statusDot" class="status-dot"></span>
+        <span id="statusText">Connecting…</span>
+      </div>
+    </header>
+
+    <section class="host-panel" aria-label="Host information">
+      <div><span>Hostname</span><strong id="hostname">—</strong></div>
+      <div><span>Processes</span><strong id="processCount">—</strong></div>
+      <div><span>Logical CPUs</span><strong id="cpuCount">—</strong></div>
+      <div><span>System Uptime</span><strong id="uptime">—</strong></div>
+    </section>
+
+    <section class="cards" aria-label="Resource utilization">
+      <article class="metric-card">
+        <div class="card-head"><h2>CPU</h2><span id="cpuValue">—%</span></div>
+        <div class="progress"><div id="cpuBar" class="progress-fill"></div></div>
+        <p id="loadAverage" class="detail">Load average: —</p>
+        <canvas id="cpuChart" width="520" height="140" aria-label="CPU usage history"></canvas>
+      </article>
+
+      <article class="metric-card">
+        <div class="card-head"><h2>Memory</h2><span id="memoryValue">—%</span></div>
+        <div class="progress"><div id="memoryBar" class="progress-fill"></div></div>
+        <p id="memoryDetail" class="detail">—</p>
+        <canvas id="memoryChart" width="520" height="140" aria-label="Memory usage history"></canvas>
+      </article>
+
+      <article class="metric-card">
+        <div class="card-head"><h2>Disk</h2><span id="diskValue">—%</span></div>
+        <div class="progress"><div id="diskBar" class="progress-fill"></div></div>
+        <p id="diskDetail" class="detail">—</p>
+        <canvas id="diskChart" width="520" height="140" aria-label="Disk usage history"></canvas>
+      </article>
+    </section>
+
+    <section class="network-panel">
+      <div>
+        <span>Network Sent</span>
+        <strong id="networkSent">—</strong>
+      </div>
+      <div>
+        <span>Network Received</span>
+        <strong id="networkReceived">—</strong>
+      </div>
+      <div>
+        <span>Last Updated</span>
+        <strong id="lastUpdated">—</strong>
+      </div>
+    </section>
+
+    <footer>
+      Refresh interval: <strong>2 seconds</strong> · API endpoint: <code>/api/metrics</code>
+    </footer>
+  </main>
+  <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
