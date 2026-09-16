@@ -2,7 +2,7 @@
 
 ## Dashboard Preview
 
-![Linux Resource Monitor Dashboard](docs/dashboard.png)
+![Linux Resource Monitor Dashboard](docs/Dashboard.png)
 
 A lightweight **Dockerized Linux resource-monitoring dashboard** built with **Python, Flask, psutil, HTML/CSS, and JavaScript**. The application exposes a JSON metrics API and a responsive browser dashboard for observing CPU, memory, disk, load average, process count, uptime, and cumulative network I/O.
 
